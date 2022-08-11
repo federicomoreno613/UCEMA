@@ -2,7 +2,9 @@ Vamos a empezar con un ejemplo simple de cómo funcionan estos tipos de ejercici
 
 ## ¿Cuál es la metodología de resolución'
 
-Algunos ejercicios pueden tener un  `Makefile`. que esto permite chequear si un challenge es correcto o no donde los test ya fueron elaborados por Fede y Javi. Para correr el script en la terminar tenes que usar `cd` hasta el folder y correr:
+Algunos ejercicios pueden tener un  `Makefile`. que esto permite chequear si un challenge es correcto o no donde los 
+test ya fueron elaborados por Fede y Javi. Para correr el script en la terminar tenes que usar `cd` hasta el folder y 
+correr:
 
 ``` bash
 make
@@ -26,7 +28,8 @@ Tu objetivo es implementar `sum4` que está en el modulo `suma_simple.py`. Los p
   1. `git commit -m "Resolví el primer erjercicio"`
   1. `git push origin master`
 
-No tengas dudas de abriri el `Makefile` y observarlo. Por default corre  `pylint` y `pytest` chequea si está correcto y estilo. Si queres chequearlos por separado podes hacerlos así
+No tengas dudas de abriri el `Makefile` y observarlo. Por default corre  `pylint` y `pytest` chequea si está correcto y 
+estilo. Si queres chequearlos por separado podes hacerlos así
 
 ```bash
 make pylint
