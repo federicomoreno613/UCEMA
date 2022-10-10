@@ -51,7 +51,7 @@ def es_una_estrella(x):
 
 def puntaje_de_compra(reviews_df):
     #es_cinco_estrellas_alt(reviews_df) si hubiera hehco la otra forma se usaba asi
-    reviews_df['es_una_estrella']= reviews_df['review_score'].apply(es_cinco_estrellas)
+    reviews_df['es_cinco_estrellas']= reviews_df['review_score'].apply(es_cinco_estrellas)
 
     reviews_df['es_una_estrella']= reviews_df['review_score'].apply(es_una_estrella)
 
