@@ -1,7 +1,5 @@
 import pandas as pd
 import datetime
-import numpy as np
-
 
 def transformar_columnas_datetime(orders_df):
     date_columns = ['order_purchase_timestamp', 'order_approved_at', 'order_delivered_carrier_date',
@@ -34,6 +32,7 @@ def real_vs_esperado(orders_df, is_delivered=True):
 
     return orders_df
 #-----------------------------------------------------------------------------------------------------------------------
+import numpy as np
 def es_cinco_estrellas_alt(reviews_df):
     reviews_df['es_cinco_estrellas']= np.where(reviews_df['review_score'] == 5, 1, 0)
 
@@ -59,4 +58,31 @@ def puntaje_de_compra(reviews_df):
 
     return reviews_df
 #-----------------------------------------------------------------------------------------------------------------------
+def calcular_numero_productos(items_df):
+    items_df = (items_df.groupby('order_id').agg( number_of_products = ('product_id','count'))).reset_index()
+    return items_df
 
+#-----------------------------------------------------------------------------------------------------------------------
+def vendedores_unicos(items_df):
+    items_df = (items_df.groupby('order_id').agg(vendedores_unicos =('product_id', 'count'))).reset_index()
+    return items_df
+#-----------------------------------------------------------------------------------------------------------------------
+def calcular_precio_y_transporte(items_df):
+    items_df = items_df.groupby('order_id', as_index = False).agg(precio = ('price', 'mean'), transporte = ('freight_value', 'mean'))
+    return items_df
+
+#-----------------------------------------------------------------------------------------------------------------------
+def calcular_distancia_vendedor_comprador(data):
+
+
+from math import radians, sin, cos, asin, sqrt
+def haversine_distance(lon1, lat1, lon2, lat2):
+    """
+    Computa distancia entre dos pares (lat, lng)
+    Ver - (https://en.wikipedia.org/wiki/Haversine_formula)
+    """
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+    return 2 * 6371 * asin(sqrt(a))
